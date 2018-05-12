@@ -3,10 +3,13 @@ from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton
 from service import *
 from user import user
 from message import message
+import telepot.api
+import urllib3
 
 
 class telegram(service):
-    TOKEN = HIDDEN
+    TOKEN = '596639179:AAGx7bXuCXEqFLcPdK7o3F5uPMkgIqz2R_w'
+
     users = {}
 
     @staticmethod
@@ -20,7 +23,9 @@ class telegram(service):
     # button click
     @staticmethod
     def on_callback(msg):
-        query_id, from_id, query_data = telepot.glance(msg, flavor='callback_query')
+        query_id, from_id, query_data = telepot.glance(
+            msg, flavor='callback_query'
+        )
         service.handle_message(telegram.users[from_id], message(msg['data']))
 
     @staticmethod
@@ -44,6 +49,18 @@ class telegram(service):
 
     @staticmethod
     def launch():
+        """
+        proxy_url = 'http://proxy.server:3128'
+        telepot.api._pools = {
+            'default': urllib3.ProxyManager(proxy_url=proxy_url, num_pools=3,
+                                            maxsize=10, retries=False,
+                                            timeout=30),
+        }
+        telepot.api._onetime_pool_spec = (urllib3.ProxyManager,
+                                          dict(proxy_url=proxy_url,
+                                               num_pools=1, maxsize=1,
+                                               retries=False, timeout=30))
+        """
         telegram.bot = telepot.Bot(telegram.TOKEN)
         telegram.bot.message_loop({
                 'chat': telegram.on_message,
