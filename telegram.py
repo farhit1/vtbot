@@ -8,7 +8,7 @@ import urllib3
 
 
 class telegram(service):
-    TOKEN = '596639179:AAGx7bXuCXEqFLcPdK7o3F5uPMkgIqz2R_w'
+    TOKEN = HIDDEN
 
     users = {}
 
