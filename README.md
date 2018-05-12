@@ -4,7 +4,7 @@ VTBot - send and receive messages from anywhere. We erase the boundaries between
 
 ## Features
 ### For users
-- Send message from one social network to another
+- Sending message from one social network to another
 - Hide your social network login
 - Stop receiving messages or mute concrete sender
 
@@ -13,8 +13,8 @@ VTBot - send and receive messages from anywhere. We erase the boundaries between
 - Easy to add new queries
 
 ### Coming soon
-- [ ] Send an e-mail
-- [ ] Send an attachment
+- [ ] Sending an e-mail
+- [ ] Sending an attachment
 
 ## Supported social networks
 - [VK](https://vk.com/vtbot)
