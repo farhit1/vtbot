@@ -19,6 +19,7 @@ class message:
         self.receiver.notify(self)
 
     def __repr__(self):
+        if self.sender is None:
             return self.text
         return 'Message from %s%s:\n%s' % (
             self.sender.login,
