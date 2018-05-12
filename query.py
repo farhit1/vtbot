@@ -51,10 +51,10 @@ class query:
         msg = """
 VTBot - send and receive messages from anywhere. \
 We erase the boundaries between social networks.\n\n\
-Telegram: @vtbot_bot\n\
-VK: vk.com/vtbot
+Telegram: t.me/vtbot_bot\n\
+VK: vk.com/vtbot\n\
+GitHub: github.com/farhit1/vtbot
         """
-        print(msg)
         self.user.notify(message(msg))
 
     commands = [
@@ -84,7 +84,9 @@ class register(query):
     def handler(self):
         username = self.message.text
         if not check_username(username):
-            raise incorrect("username should be a string, containing at least 4 letters")
+            raise incorrect("""
+username should be a string, containing at least 4 letters
+            """)
         if username in users:
             raise incorrect('username is already taken')
         users[username] = self.user
@@ -163,7 +165,10 @@ class send_message:
             self.user.next_action(send_message.get_time)
 
     class get_time(query):
-        desc = 'Type after how many minutes message would be sent.\nType 0 to send it immediately.'
+        desc = """
+Type after how many minutes message would be sent.\n
+Type 0 to send it immediately.\
+        """
         small_info_show = True
 
         def handler(self):
