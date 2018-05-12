@@ -7,26 +7,40 @@ import urllib.parse
 
 
 class vk(service):
-    server = HIDDEN
-    key = HIDDEN
-
+    longpoll_server = HIDDEN
     access_token = HIDDEN
+    api_version = HIDDEN
+    group_id = HIDDEN
 
+    longpoll_key = None
     users = {}
-    timestamp = 1
+    ts = 1
+
+    @staticmethod
+    def build_url(method, properties=dict()):
+        properties['access_token'] = vk.access_token
+        properties['v'] = vk.api_version
+        return 'https://api.vk.com/method/%s?%s' % (
+            method,
+            urllib.parse.urlencode(properties)
+        )
 
     @staticmethod
     def send_message(id, message):
-        send_url = 'https://api.vk.com/method/messages.send?user_id=%s&message=%s&access_token=%s&v=5.50' % (
-            id, urllib.parse.quote(str(message), safe=''), vk.access_token,
-        )
-        with urllib.request.urlopen(send_url) as url:
-            print(json.loads(url.read().decode()))
+        with urllib.request.urlopen(vk.build_url('messages.send', {
+            'user_id': id,
+            'message': message
+        })) as url:
+            pass
 
     @staticmethod
     def long_poll_url():
-        return '%s?act=a_check&key=%s&ts=%s' % (
-            vk.server, vk.key, vk.timestamp
+        return '%s?%s' % (
+            vk.longpoll_server, urllib.parse.urlencode({
+                'act': 'a_check',
+                'key': vk.key,
+                'ts': vk.ts
+            })
         )
 
     @staticmethod
@@ -41,12 +55,21 @@ class vk(service):
                         text = '/start'
                         vk.users[uid] = user(vk, uid, uid)
                     service.handle_message(vk.users[uid], message(text))
-            vk.timestamp = str(max(int(vk.timestamp), int(data['ts'])))
+            vk.ts = data['ts']
 
     @staticmethod
     def launch():
+        with urllib.request.urlopen(vk.build_url('groups.getLongPollServer', {
+            'group_id': vk.group_id
+        })) as url:
+            data = json.loads(url.read().decode())
+            vk.key = data['response']['key']
         with urllib.request.urlopen(vk.long_poll_url()) as url:
             data = json.loads(url.read().decode())
-            vk.timestamp = data['ts']
+            vk.ts = data['ts']
+
+    @staticmethod
+    def get_id(id):
+        return 'vk@id%s' % id.split('@')[1]
 
 services.append(vk)
