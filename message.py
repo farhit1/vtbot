@@ -1,4 +1,3 @@
-from user_base import users
 import datetime
 
 
@@ -21,9 +20,14 @@ class message:
     def __repr__(self):
         if self.sender is None:
             return self.text
+        service_login = ''
+        if self.sender.show_service_name:
+            service_login = ' (%s)' % self.sender.service.get_id(
+                self.sender.get_service_login()
+            )
         return 'Message from %s%s:\n%s' % (
             self.sender.login,
-            ' (%s)' % self.sender.get_service_login() if self.sender.show_service_name else '',
+            service_login,
             self.text
         )
 
