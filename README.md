@@ -2,7 +2,7 @@
 
 VTBot - send and receive messages from anywhere. We erase the boundaries between social networks and give you opportunity not to register everywhere. VTBot provides freedom of messaging. 
 
-![Cover](https://github.com/farhit1/vtbot/blob/master/pics/cover.png)
+![Cover](https://github.com/farhit1/vtbot/blob/master/pics/cover2.png)
 
 ## Features
 ### For users
