@@ -12,7 +12,7 @@ VTBot - send and receive messages from anywhere. We erase the boundaries between
 ### For users
 - Sending message from one social network to another
 - Hide your social network login
-- Stop receiving messages or mute concrete sender
+- Pause and continue receiving messages
 
 ### For developers
 - Easy to add new social network
