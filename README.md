@@ -23,5 +23,13 @@ VTBot - send and receive messages from anywhere. We erase the boundaries between
 - [ ] Sending an attachment
 
 ## Supported social networks
-- [VK](https://vk.com/vtbot)
-- [Telegram](http://t.me/vtbot_bot)
+
+[![VK][vk.icon]][vk.link]
+[![Telegram][telegram.icon]][telegram.link]
+
+[vk.icon]: https://github.com/farhit1/vtbot/blob/master/pics/vk.png
+[vk.link]: https://vk.com/vtbot
+
+[telegram.icon]: https://github.com/farhit1/vtbot/blob/master/pics/telegram.png
+[telegram.link]: http://t.me/vtbot_bot
+
