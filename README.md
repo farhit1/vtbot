@@ -27,9 +27,9 @@ VTBot - send and receive messages from anywhere. We erase the boundaries between
 [![VK][vk.icon]][vk.link]
 [![Telegram][telegram.icon]][telegram.link]
 
-[vk.icon]: https://github.com/farhit1/vtbot/blob/master/pics/vk.png
+[vk.icon]: https://github.com/farhit1/vtbot/blob/master/pics/vk64.png
 [vk.link]: https://vk.com/vtbot
 
-[telegram.icon]: https://github.com/farhit1/vtbot/blob/master/pics/telegram.png
+[telegram.icon]: https://github.com/farhit1/vtbot/blob/master/pics/telegram64.png
 [telegram.link]: http://t.me/vtbot_bot
 
