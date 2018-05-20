@@ -1,16 +1,16 @@
 import service
 import message
 import sys
+import time
 
 import telegram
 import vk
 
 
-def eprint(msg):
-    print(msg, end='', file=sys.stderr)
-
-
 if __name__ == '__main__':
+    def eprint(msg):
+        print(msg, end='', file=sys.stderr)
+
     for s in service.services:
         eprint(s.__name__)
         s.launch()
@@ -23,3 +23,4 @@ if __name__ == '__main__':
             s.handle()
         # deliver sent messages
         message.flush_outbox()
+        time.sleep(1)

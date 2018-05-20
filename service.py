@@ -1,8 +1,5 @@
+# inherit services from this class
 class service:
-    @staticmethod
-    def handle_message(user, msg):
-        user.get_action(msg).handle()
-
     # override
     @classmethod
     def launch(cls):
@@ -18,5 +15,14 @@ class service:
     def handle(cls):
         raise Exception('set up %s.handle()' % cls.__name__)
 
+    # override to show user's id not in standart way
+    @staticmethod
+    def get_id(id):
+        return id
+
+    # don't override
+    @staticmethod
+    def handle_message(user, msg):
+        user.get_action(msg).handle()
 
 services = []
