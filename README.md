@@ -18,10 +18,6 @@ VTBot - send and receive messages from anywhere. We erase the boundaries between
 - Easy to add new social network
 - Easy to add new queries
 
-### Coming soon
-- [ ] Sending an e-mail
-- [ ] Sending an attachment
-
 ## Supported social networks
 
 [![VK][vk.icon]][vk.link]
